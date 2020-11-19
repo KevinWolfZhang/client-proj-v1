@@ -1,0 +1,59 @@
+<page-header></page-header>
+
+<nz-card>
+  <nz-table #userListTable
+            [nzFrontPagination]="false"
+            [nzData]="userList"
+            [nzLoading]="loading"
+            [nzTotal]="page.totalCount"
+            [nzShowTotal]="true"
+            [(nzPageIndex)]="page.page"
+            [(nzPageSize)] = "page.size"
+            (nzPageIndexChange)="loadData()"
+            (nzPageSizeChange)="loadData()"
+            [nzShowSizeChanger]="true"
+  >
+    <thead nz-thead>
+      <tr>
+        <th nz-th>
+          <span>序号</span>
+        </th>
+        <th nz-th>
+          <span>用户名</span><!--l() 左对齐-->
+        </th>
+        <th nz-th>
+          <span>密码</span>
+        </th>
+        <th nz-th>
+          <span>操作</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody nz-tbody>
+      <tr nz-tbody-tr *ngFor="let user of userListTable.data; let i = index;">
+        <td nz-td>
+          {{i + 1}}
+        </td>
+        <td nz-td>
+          {{user.userName}}
+        </td>
+        <td nz-td>
+          {{user.password}}
+        </td>
+        <td nz-td>
+          <a nz-dropdown [nzDropdownMenu]="menu">
+            操作
+            <i nz-icon nzType="down"></i>
+          </a>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu nzSelectable>
+              <li nz-menu-item>编辑</li>
+              <nz-divider nzType="vertical"></nz-divider>
+              <li nz-menu-item>删除</li>
+            </ul>
+          </nz-dropdown-menu>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
