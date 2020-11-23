@@ -12,8 +12,9 @@ export class UserListComponent implements OnInit {
   loading: boolean = false;
   constructor(
     private injector: Injector,
-    private http: _HttpClient
+    // private http: _HttpClient
   ) {
+    // super(injector);
     this.page = new Page();
     this.page.page = 1;
     this.page.size = 10;

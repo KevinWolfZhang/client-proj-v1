@@ -1,12 +1,30 @@
-<page-header></page-header>
+<page-header [title]="'用户列表'" [breadcrumb]="breadcrumb">
+  <ng-template #breadcrumb>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item><a>系统管理</a></nz-breadcrumb-item>
+      <nz-breadcrumb-item><a>用户管理</a></nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </ng-template>
+</page-header>
 
-<nz-card>
+<ng-template #extraTemplate>
+  <a nz-dropdown [nzDropdownMenu]="menu">
+    More
+    <i nz-icon nzType="down"></i>
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>刷新</li>
+    </ul>
+  </nz-dropdown-menu>
+</ng-template>
+
+<nz-card [nzExtra]="extraTemplate"><!-- -->
   <nz-table #userListTable
             [nzFrontPagination]="false"
             [nzData]="userList"
             [nzLoading]="loading"
             [nzTotal]="page.totalCount"
-            [nzShowTotal]="true"
             [(nzPageIndex)]="page.page"
             [(nzPageSize)] = "page.size"
             (nzPageIndexChange)="loadData()"

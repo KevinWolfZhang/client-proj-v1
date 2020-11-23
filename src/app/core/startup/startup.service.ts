@@ -1,17 +1,16 @@
-import { Injectable, Injector, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { zip } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { MenuService, SettingsService, TitleService, ALAIN_I18N_TOKEN } from '@delon/theme';
-import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { ACLService } from '@delon/acl';
-import { TranslateService } from '@ngx-translate/core';
-import { I18NService } from '../i18n/i18n.service';
+import {Inject, Injectable, Injector} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {zip} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {ALAIN_I18N_TOKEN, MenuService, SettingsService, TitleService} from '@delon/theme';
+import {DA_SERVICE_TOKEN, ITokenService} from '@delon/auth';
+import {ACLService} from '@delon/acl';
+import {TranslateService} from '@ngx-translate/core';
+import {I18NService} from '../i18n/i18n.service';
 
-import { NzIconService } from 'ng-zorro-antd/icon';
-import { ICONS } from '../../../style-icons';
-import { ICONS_AUTO } from '../../../style-icons-auto';
+import {NzIconService} from 'ng-zorro-antd/icon';
+import {ICONS} from '../../../style-icons';
+import {ICONS_AUTO} from '../../../style-icons-auto';
 
 /**
  * Used for application startup
@@ -74,8 +73,8 @@ export class StartupService {
       .subscribe(langData => {
         this.translate.setTranslation(this.i18n.defaultLang, langData);
         this.translate.setDefaultLang(this.i18n.defaultLang);
-
-        this.viaMock(resolve, reject);
+        this.viaHttp(resolve, reject);
+        // this.viaMock(resolve, reject);
       });
   }
 
@@ -92,9 +91,9 @@ export class StartupService {
       description: `Ng-zorro admin panel front-end framework`
     };
     const user: any = {
-      name: 'Admin',
+      name: '张忠博',
       avatar: './assets/tmp/img/avatar.jpg',
-      email: 'cipchk@qq.com',
+      email: 'kevin@qq.com',
       token: '123456789'
     };
     // Application information: including site name, description, year
@@ -123,6 +122,7 @@ export class StartupService {
             text: '用户管理',
             link: '/users',
             icon: { type: 'icon', value: 'user' },
+            shortcutRoot: true
           }
         ]
       }

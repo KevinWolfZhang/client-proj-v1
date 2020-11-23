@@ -9,10 +9,13 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
+import {NgZorroAntdModule} from "ng-zorro-antd";
 
 // #region third libs
 
-const THIRDMODULES = [ ];
+const THIRDMODULES = [
+  NgZorroAntdModule,
+];
 
 // #endregion
 

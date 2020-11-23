@@ -7,7 +7,6 @@ import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
 import { LayoutPassportComponent } from '../layout/passport/passport.component';
 // dashboard pages
-import { DashboardComponent } from './dashboard/dashboard.component';
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -15,19 +14,24 @@ import { UserRegisterResultComponent } from './passport/register-result/register
 // single pages
 import { CallbackComponent } from './callback/callback.component';
 import { UserLockComponent } from './passport/lock/lock.component';
+import {HeaderComponent11} from "./header/header11.component";
 
 const routes: Routes = [
   {
+    path: 'default',
+    component: LayoutDefaultComponent,
+    children: [
+      { path: '', redirectTo: 'header', pathMatch: 'full' },
+      { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
+      { path: 'header', component: HeaderComponent11, pathMatch: 'full'}
+    ]
+  },
+  {
     path: '',
     component: LayoutDefaultComponent,
-    canActivate: [SimpleGuard],
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
-      { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
-      { path: 'users', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
-      // 业务子模块
-      // { path: 'widgets', loadChildren: () => import('./widgets/widgets.module').then(m => m.WidgetsModule) },
+      { path: '', redirectTo: 'admin', pathMatch: 'full'},
+      { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
     ]
   },
   // 全屏布局

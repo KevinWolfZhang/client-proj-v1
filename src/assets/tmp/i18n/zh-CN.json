@@ -150,5 +150,7 @@
   "validation.goal.required": "请输入目标描述",
   "validation.standard.required": "请输入衡量标准",
   "Please enter userName!'": "请输入用户名",
-  "Please enter password!'": "请输入密码"
+  "Please enter password!'": "请输入密码",
+  "admin.management": "系统管理",
+  "admin.management.user": "用户管理"
 }

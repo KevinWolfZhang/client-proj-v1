@@ -1,26 +1,28 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { SharedModule } from '@shared';
-import { RouteRoutingModule } from './routes-routing.module';
+import {SharedModule} from '@shared';
+import {RouteRoutingModule} from './routes-routing.module';
 // dashboard pages
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 // passport pages
-import { UserLoginComponent } from './passport/login/login.component';
-import { UserRegisterComponent } from './passport/register/register.component';
-import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
+import {UserLoginComponent} from './passport/login/login.component';
+import {UserRegisterComponent} from './passport/register/register.component';
+import {UserRegisterResultComponent} from './passport/register-result/register-result.component';
 // single pages
-import { CallbackComponent } from './callback/callback.component';
-import { UserLockComponent } from './passport/lock/lock.component';
+import {CallbackComponent} from './callback/callback.component';
+import {UserLockComponent} from './passport/lock/lock.component';
+import {HeaderComponent11} from "./header/header11.component";
 
 const COMPONENTS = [
   DashboardComponent,
+  HeaderComponent11,
   // passport pages
   UserLoginComponent,
   UserRegisterComponent,
   UserRegisterResultComponent,
   // single pages
   CallbackComponent,
-  UserLockComponent,
+  UserLockComponent
 ];
 const COMPONENTS_NOROUNT = [];
 

@@ -4,9 +4,9 @@
     "description": "Ng-zorro admin panel front-end framework"
   },
   "user": {
-    "name": "Admin",
+    "name": "Kevin",
     "avatar": "./assets/tmp/img/avatar.jpg",
-    "email": "cipchk@qq.com"
+    "email": "Kevin@qq.com"
   },
   "menu": [
     {
@@ -16,14 +16,15 @@
       "hideInBreadcrumb": true,
       "children": [
         {
-          "text": "仪表盘",
-          "i18n": "menu.dashboard",
-          "icon": "anticon-dashboard",
+          "text": "系统管理",
+          "i18n": "admin.management",
+          "icon": "anticon-setting",
           "children": [
             {
-              "text": "仪表盘V1",
-              "link": "/dashboard/v1",
-              "i18n": "menu.dashboard.v1"
+              "text": "用户管理",
+              "link": "/admin/users",
+              "i18n": "admin.management.user",
+              "shortCutRoot": true
             },
             {
               "text": "分析页",
@@ -46,7 +47,6 @@
           "text": "快捷菜单",
           "i18n": "menu.shortcut",
           "icon": "anticon-rocket",
-          "shortcutRoot": true,
           "children": []
         },
         {
@@ -71,7 +71,7 @@
           "children": [
             {
               "text": "Typography",
-              "link": "/style/typography",
+              "link": "/default/header",
               "i18n": "menu.style.typography",
               "shortcut": true
             },
