@@ -14,7 +14,7 @@
   </a>
   <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>
-      <li nz-menu-item>刷新</li>
+      <li nz-menu-item (click)="loadData()">刷新</li>
     </ul>
   </nz-dropdown-menu>
 </ng-template>
@@ -40,7 +40,10 @@
           <span>用户名</span><!--l() 左对齐-->
         </th>
         <th nz-th>
-          <span>密码</span>
+          <span>描述</span>
+        </th>
+        <th nz-th>
+          <span>照片</span>
         </th>
         <th nz-th>
           <span>操作</span>
@@ -53,10 +56,16 @@
           {{i + 1}}
         </td>
         <td nz-td>
-          {{user.userName}}
+          {{user.owner}}
         </td>
         <td nz-td>
-          {{user.password}}
+          {{user.description}}
+        </td>
+        <td nz-td>
+          {{user.title}}
+        </td>
+        <td nz-td>
+          <nz-avatar nzSize="small" nzIcon="anticon anticon-user" [nzSrc]="user.avatar"></nz-avatar>
         </td>
         <td nz-td>
           <a nz-dropdown [nzDropdownMenu]="menu">

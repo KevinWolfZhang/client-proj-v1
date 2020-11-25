@@ -10,18 +10,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 import {NgZorroAntdModule} from "ng-zorro-antd";
+import {ImageWrapperComponent} from "./components/image-wrapper";
 
 // #region third libs
 
 const THIRDMODULES = [
-  NgZorroAntdModule,
+  // third lips
+  NgZorroAntdModule
 ];
 
 // #endregion
 
 // #region your componets & directives
 
-const COMPONENTS = [];
+const COMPONENTS = [
+  ImageWrapperComponent
+];
 const DIRECTIVES = [];
 
 // #endregion

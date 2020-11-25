@@ -1,10 +1,12 @@
 export class User {
-  constructor(name, password) {
-    this.userName = name;
-    this.password = password;
+  constructor(owner, description) {
+    this.owner = owner;
+    this.description = description;
   }
-  userName;
-  password;
+  owner;
+  description;
+  avatar;
+  title;
 }
 
 export class Page<T> {

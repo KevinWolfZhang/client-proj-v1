@@ -29,7 +29,8 @@
             {
               "text": "分析页",
               "link": "/dashboard/analysis",
-              "i18n": "menu.dashboard.analysis"
+              "i18n": "menu.dashboard.analysis",
+              "hideInBreadcrumb": true
             },
             {
               "text": "监控页",

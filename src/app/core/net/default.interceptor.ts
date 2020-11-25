@@ -104,7 +104,7 @@ export class DefaultInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // 统一加上服务端前缀
+    // 统一加上服务端前缀 请求前
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = environment.SERVER_URL + url;
@@ -112,6 +112,7 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     const newReq = req.clone({ url });
     return next.handle(newReq).pipe(
+      // 接收后
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
         if (event instanceof HttpResponseBase) {

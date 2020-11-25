@@ -12,7 +12,7 @@ export class UserListComponent implements OnInit {
   loading: boolean = false;
   constructor(
     private injector: Injector,
-    // private http: _HttpClient
+    private http: _HttpClient
   ) {
     // super(injector);
     this.page = new Page();
@@ -26,14 +26,18 @@ export class UserListComponent implements OnInit {
 
   loadData() {
     this.loading = true;
-    setTimeout(() => {
-      this.userList = [
-        new User('zhangsan', '123456'),
-        new User('lisi', '123456'),
-        new User('wanger', '123456')
-      ];
-      this.page.totalCount = this.userList.length;
+    this.http.get(`/user?pi=${this.page.page}&ps=${this.page.size}`).subscribe((res): any => {
+      this.userList = res.list;
       this.loading = false;
-    }, 1000);
+    });
+    // setTimeout(() => {
+    //   this.userList = [
+    //     new User('zhangsan', '123456'),
+    //     new User('lisi', '123456'),
+    //     new User('wanger', '123456')
+    //   ];
+    //   this.page.totalCount = this.userList.length;
+    //   this.loading = false;
+    // }, 1000);
   }
 }
