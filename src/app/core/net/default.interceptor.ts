@@ -1,12 +1,16 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
-import { Router } from '@angular/router';
-import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { _HttpClient } from '@delon/theme';
-import { environment } from '@env/environment';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, mergeMap } from 'rxjs/operators';
+import {
+  HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest,
+  HttpResponseBase
+} from '@angular/common/http';
+import {Injectable, Injector} from '@angular/core';
+import {Router} from '@angular/router';
+import {DA_SERVICE_TOKEN, ITokenService} from '@delon/auth';
+import {_HttpClient, SettingsService} from '@delon/theme';
+import {NzNotificationService} from 'ng-zorro-antd/notification';
+import {Observable, of, throwError} from 'rxjs';
+import {catchError, mergeMap, retry} from 'rxjs/operators';
+import {NzMessageService} from "ng-zorro-antd";
+import {TokenStoreService} from "../auth/token-store.service";
 
 const CODEMESSAGE = {
   200: '服务器成功返回请求的数据。',
@@ -106,11 +110,27 @@ export class DefaultInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 统一加上服务端前缀 请求前
     let url = req.url;
-    if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      url = environment.SERVER_URL + url;
+    if (!url.startsWith('https://') && !url.startsWith('http://') && !url.startsWith('assets')) {
+      const serverUrl = this.injector.get(SettingsService).app.serverUrl;
+      url = serverUrl + url;
     }
 
-    const newReq = req.clone({ url });
+    const newReq = req.clone({ headers: new HttpHeaders().set('token', '123'), url: url });
+    // const newReq = req.clone({url});
+    // let token = '123';
+    // newReq.headers = newReq.headers.set('token', token ? token : '');
+
+
+    // return next.handle(newReq).catch((error, caught) => {
+    //   if (error.status === 401) {
+    //     this.goLogin();
+    //     return Observable.throw(error);
+    //   } else if (error.status === 500) {
+    //     this.serverError();
+    //     return Observable.throw(error);
+    //   }
+    //   return Observable.throw(error);
+    // }) as any;
     return next.handle(newReq).pipe(
       // 接收后
       mergeMap((event: any) => {
@@ -123,5 +143,15 @@ export class DefaultInterceptor implements HttpInterceptor {
       }),
       catchError((err: HttpErrorResponse) => this.handleData(err)),
     );
+  }
+
+  private serverError() {
+    console.error('捕获到500错误');
+    this.injector.get(NzMessageService).error('服务端异常，请求失败！');
+  }
+
+  private goLogin() {
+    console.log('捕获到401错误,清空Token存储并返回登录页面');
+    this.injector.get(TokenStoreService).clear();
   }
 }

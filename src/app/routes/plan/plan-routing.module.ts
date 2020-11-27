@@ -1,14 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PlanListComponent } from './list/list.component';
-import { PlanCurdComponent } from './curd/curd.component';
-import { PlanEditsComponent } from './curd/view/edits/edits.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {PlanExaisFlightPlanComponent} from './exais-flight-plan/exais-flight-plan.component';
 
 const routes: Routes = [
-
-  { path: 'list', component: PlanListComponent },
-  { path: 'curd', component: PlanCurdComponent },
-  { path: 'edits', component: PlanEditsComponent }];
+  { path: 'exais-flight-plan', component: PlanExaisFlightPlanComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

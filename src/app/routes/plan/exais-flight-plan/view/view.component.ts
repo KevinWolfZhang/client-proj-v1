@@ -4,10 +4,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'app-plan-view',
+  selector: 'app-plan-exais-flight-plan-view',
   templateUrl: './view.component.html',
 })
-export class PlanViewComponent implements OnInit {
+export class PlanExaisFlightPlanViewComponent implements OnInit {
   record: any = {};
   i: any;
 

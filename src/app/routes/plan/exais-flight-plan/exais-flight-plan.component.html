@@ -5,5 +5,13 @@
 </page-header>
 <nz-card>
   <sf mode="search" [schema]="searchSchema" (formSubmit)="st.reset($event)" (formReset)="st.reset($event)"></sf>
+  <nz-row>
+    <nz-col nzSpan="4">
+      <input nz-input [(ngModel)]="id" style="display: inline-block; width: 80%;"/>
+    </nz-col>
+    <nz-col nzSpan="4">
+      <button nz-button nzType="primary" (click)="search(id)">查询</button>
+    </nz-col>
+  </nz-row>
   <st #st [data]="url" [columns]="columns"></st>
 </nz-card>

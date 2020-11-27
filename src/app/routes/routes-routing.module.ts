@@ -32,6 +32,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'admin', pathMatch: 'full'},
       { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
+      { path: 'plan', loadChildren: () => import('./plan/plan.module').then(n => n.PlanModule)}
     ]
   },
   // 全屏布局

@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
 
 @Component({
-  selector: 'app-plan-edits',
-  templateUrl: './edits.component.html',
+  selector: 'app-admin-roles-edit',
+  templateUrl: './edit.component.html',
 })
-export class PlanEditsComponent implements OnInit {
-  
-  id = this.route.snapshot.params.id;
+export class AdminRolesEditComponent implements OnInit {
+  record: any = {};
   i: any;
   schema: SFSchema = {
     properties: {
@@ -41,14 +39,13 @@ export class PlanEditsComponent implements OnInit {
   };
 
   constructor(
-    private route: ActivatedRoute,
-    public location: Location,
+    private modal: NzModalRef,
     private msgSrv: NzMessageService,
     public http: _HttpClient,
   ) {}
 
   ngOnInit(): void {
-    if (this.id > 0)
+    if (this.record.id > 0)
     this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
   }
 
@@ -57,5 +54,9 @@ export class PlanEditsComponent implements OnInit {
       this.msgSrv.success('保存成功');
       this.modal.close(true);
     });
+  }
+
+  close() {
+    this.modal.destroy();
   }
 }

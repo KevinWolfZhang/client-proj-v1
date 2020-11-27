@@ -1,7 +1,8 @@
 {
   "app": {
-    "name": "Alain",
-    "description": "Ng-zorro admin panel front-end framework"
+    "name": "飞行前资料准备系统",
+    "description": "飞行前资料准备系统",
+    "serverUrl": "http://192.168.206.28:8090"
   },
   "user": {
     "name": "Kevin",
@@ -21,21 +22,21 @@
           "icon": "anticon-setting",
           "children": [
             {
-              "text": "用户管理",
+              "text": "用户",
               "link": "/admin/users",
               "i18n": "admin.management.user",
               "shortCutRoot": true
             },
             {
-              "text": "分析页",
-              "link": "/dashboard/analysis",
-              "i18n": "menu.dashboard.analysis",
+              "text": "角色",
+              "link": "/admin/roles",
+              "i18n": "admin.management.role",
               "hideInBreadcrumb": true
             },
             {
-              "text": "监控页",
-              "link": "/dashboard/monitor",
-              "i18n": "menu.dashboard.monitor"
+              "text": "飞行计划",
+              "link": "/plan/exais-flight-plan",
+              "i18n": "plan.exais.flight"
             },
             {
               "text": "工作台",

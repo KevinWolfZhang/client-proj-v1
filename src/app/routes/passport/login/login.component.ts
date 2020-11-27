@@ -8,6 +8,7 @@ import { SettingsService, _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import {Subject} from "rxjs/index";
 
 @Component({
   selector: 'passport-login',
@@ -191,4 +192,9 @@ export class UserLoginComponent implements OnDestroy {
   clearPassword() {
     this.form.patchValue({'password': ''});
   }
+
+  // obtainSessionToken() {
+  //   let event = new Subject<String>();
+  //   if ()
+  // }
 }

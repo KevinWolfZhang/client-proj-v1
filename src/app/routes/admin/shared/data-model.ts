@@ -14,3 +14,10 @@ export class Page<T> {
   size: number;
   totalCount: number;
 }
+
+export class Role{
+  id;
+  roleCode;
+  roleName;
+  comment;
+}

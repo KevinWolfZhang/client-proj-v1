@@ -1,23 +1,16 @@
-import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
-import { PlanRoutingModule } from './plan-routing.module';
-import { PlanListComponent } from './list/list.component';
-import { PlanViewComponent } from './te/view/view.component';
-import { PlanViewComponent } from './list/te/view/view.component';
-import { PlanCurdComponent } from './curd/curd.component';
-import { PlanCurdEditComponent } from './curd/edit/edit.component';
-import { PlanCurdViewComponent } from './curd/view/view.component';
-import { PlanEditsComponent } from './curd/view/edits/edits.component';
+import {NgModule} from '@angular/core';
+import {SharedModule} from '@shared';
+import {PlanRoutingModule} from './plan-routing.module';
+import {PlanExaisFlightPlanComponent} from './exais-flight-plan/exais-flight-plan.component';
+import {PlanExaisFlightPlanEditComponent} from './exais-flight-plan/edit/edit.component';
+import {PlanExaisFlightPlanViewComponent} from './exais-flight-plan/view/view.component';
+import {PlanService} from "./service/plan.service";
 
 const COMPONENTS = [
-  PlanListComponent,
-  PlanCurdComponent,
-  PlanEditsComponent];
+  PlanExaisFlightPlanComponent];
 const COMPONENTS_NOROUNT = [
-  PlanViewComponent,
-  PlanViewComponent,
-  PlanCurdEditComponent,
-  PlanCurdViewComponent];
+  PlanExaisFlightPlanEditComponent,
+  PlanExaisFlightPlanViewComponent];
 
 @NgModule({
   imports: [
@@ -28,5 +21,8 @@ const COMPONENTS_NOROUNT = [
     ...COMPONENTS,
     ...COMPONENTS_NOROUNT
   ],
+  providers: [
+    PlanService
+  ]
 })
 export class PlanModule { }

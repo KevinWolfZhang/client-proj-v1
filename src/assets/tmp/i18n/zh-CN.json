@@ -152,5 +152,7 @@
   "Please enter userName!'": "请输入用户名",
   "Please enter password!'": "请输入密码",
   "admin.management": "系统管理",
-  "admin.management.user": "用户管理"
+  "admin.management.user": "用户管理",
+  "admin.management.role": "角色管理",
+  "plan.exais.flight": "飞行计划"
 }

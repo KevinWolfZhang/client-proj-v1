@@ -4,10 +4,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { _HttpClient } from '@delon/theme';
 
 @Component({
-  selector: 'app-plan-curd-view',
+  selector: 'app-admin-roles-view',
   templateUrl: './view.component.html',
 })
-export class PlanCurdViewComponent implements OnInit {
+export class AdminRolesViewComponent implements OnInit {
   record: any = {};
   i: any;
 

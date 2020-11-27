@@ -63,8 +63,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultInterceptor } from '@core';
 import { SimpleInterceptor } from '@delon/auth';
 const INTERCEPTOR_PROVIDES = [
-  { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
-  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true}
+  // { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true},
+  // { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true}, // 用于为请求添加token参数
+  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true} // 统一处理服务器请求前缀、处理请求异常及业务异常
+  // { provide: HTTP_INTERCEPTORS, useClass: BaseInterceptor, multi: true}
 ];
 // #endregion
 
@@ -96,6 +98,7 @@ import { LayoutModule } from './layout/layout.module';
 import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
+import {BaseInterceptor} from "./core/net/base-interceptor";
 
 @NgModule({
   declarations: [

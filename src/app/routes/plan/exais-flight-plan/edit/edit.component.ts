@@ -5,10 +5,10 @@ import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
 
 @Component({
-  selector: 'app-plan-curd-edit',
+  selector: 'app-plan-exais-flight-plan-edit',
   templateUrl: './edit.component.html',
 })
-export class PlanCurdEditComponent implements OnInit {
+export class PlanExaisFlightPlanEditComponent implements OnInit {
   record: any = {};
   i: any;
   schema: SFSchema = {

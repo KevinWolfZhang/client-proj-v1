@@ -67,36 +67,18 @@ const THIRDMODULES = [
 ng g ng-alain:view view -m=plan -t=list/te
 ng g ng-alain:view list/te -m=plan  以plan.module.ts所在层级往下按list/te/view层级创建
 
+app-data.json -> routes-routing.module.ts -> 组件模块
+
+新增通用的注入service 在模块module.ts里增加providers: [..Service]
 
 
+token
+https://blog.csdn.net/lindali1115/article/details/88637017
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ng-alain 项目 测试时给url的header手动赋予token值 执行时报无效的token问题 或在network里看token值被加密了 
+解决办法：在app.module.ts文件中注释掉{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
+这个拦截器用于为请求统一添加token参数 测试用不着时要注掉
+或保留这个拦截 在url后面加上_allow_anonymous=ture 如/login/account?_allow_anonymous=true也可正常使用
 
 
 
