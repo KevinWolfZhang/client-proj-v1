@@ -1,11 +1,10 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Injector} from "@angular/core";
-import {ErrorObserver, from, Observable} from "rxjs/index";
-import {ignore} from "selenium-webdriver/testing";
-import {TokenStoreService} from "./token-store.service";
-import {Router} from "@angular/router";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injector } from '@angular/core';
+import { Observable } from 'rxjs/index';
+import { TokenStoreService } from './token-store.service';
+import { Router } from '@angular/router';
 
-export class OauthInterceptor implements HttpInterceptor {
+export class OauthInterceptor implements HttpInterceptor{
   constructor(private injector: Injector) {
 
   }
@@ -28,7 +27,7 @@ export class OauthInterceptor implements HttpInterceptor {
       });
     } else {
       this.injector.get(Router).navigateByUrl('/passport/login');
-      return ErrorObserver.error({status: '401', from: 'oauth-intercept'});
+      // return ErrorObserver.error({status: '401', from: 'oauth-intercept'});
     }
     return next.handle(req);
   }
