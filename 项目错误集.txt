@@ -80,8 +80,8 @@ ng-alain 项目 测试时给url的header手动赋予token值 执行时报无效�
 这个拦截器用于为请求统一添加token参数 测试用不着时要注掉
 或保留这个拦截 在url后面加上_allow_anonymous=ture 如/login/account?_allow_anonymous=true也可正常使用
 
-ng-alain 项目  
-
+git commit 提交报错 husky ＞ pre-commit 问题  
+https://blog.csdn.net/steven_jxy/article/details/110136134
 
 
 
